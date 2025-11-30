@@ -1,0 +1,30 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <description>Build and push backend Docker image to ECR</description>
+  <triggers>
+    <scm>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
+    </scm>
+  </triggers>
+  <scm class="hudson.plugins.git.GitSCM">
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>https://github.com/nikhilmathur1957/nikhilTravelMemory.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>*/main</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+  </scm>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>cd backend
+docker build -t nikhiltravelmemory-backend .
+aws ecr get-login-password --region ca-central-1 | docker login --username AWS --password-stdin $(aws sts get-caller-identity --query 'Account' --output text).dkr.ecr.ca-central-1.amazonaws.com
+docker tag nikhiltravelmemory-backend:latest $(aws sts get-caller-identity --query 'Account' --output text).dkr.ecr.ca-central-1.amazonaws.com/nikhiltravelmemory-backend:latest
+docker push $(aws sts get-caller-identity --query 'Account' --output text).dkr.ecr.ca-central-1.amazonaws.com/nikhiltravelmemory-backend:latest</command>
+    </hudson.tasks.Shell>
+  </builders>
+</project>

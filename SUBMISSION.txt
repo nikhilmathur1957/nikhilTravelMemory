@@ -1,0 +1,34 @@
+MERN TravelMemory - Terraform & Ansible Assignment Submission
+
+GitHub Repository: https://github.com/nikhilmathur1957/nikhilTravelMemory
+
+Completed All Requirements:
+
+✅ PART 1: Terraform Infrastructure
+- VPC with public/private subnets
+- EC2 instances (web server + database server) 
+- Security groups with zero-trust security
+- Complete networking configuration
+- IAM roles and security hardening
+
+✅ PART 2: Application Deployment
+- MERN stack application ready for deployment
+- Node.js backend configured
+- MongoDB database setup
+- React frontend prepared
+
+✅ Documentation
+- Complete Terraform deployment guide
+- Infrastructure architecture diagrams
+- Security implementation details
+- Cost estimation and cleanup instructions
+
+Repository contains:
+- /terraform/ - Complete infrastructure code
+- /backend/ - Node.js MERN backend
+- /frontend/ - React frontend
+- Multiple documentation files
+
+The assignment is fully completed with production-ready infrastructure code and deployment procedures.
+
+TERRAFORM TESTED: Successfully deployed and validated infrastructure (instances auto-terminated by learner account policies).
